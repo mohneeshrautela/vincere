@@ -1,0 +1,3 @@
+<body><script>const out=[];
+const names=["hp","dell","lenovo","asus","acer","apple","samsung","skhynix","micron"];
+Promise.all(names.map(n=>fetch(n+".svg").then(r=>r.text()).then(t=>{const d=document.createElement("div");d.innerHTML=t;document.body.appendChild(d);const s=d.querySelector("svg");const b=s.getBBox();out.push(n+" "+[b.x,b.y,b.width,b.height].map(v=>v.toFixed(3)).join(" "))}))).then(()=>{document.title="done";const p=document.createElement("pre");p.id="r";p.textContent=out.join("\n");document.body.appendChild(p)})</script></body>
